@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/css/style.css" />
+    <script type="module" src="/src/main.ts" defer></script>
+    <title>To-do Lists</title>
+  </head>
+  <body theme="light">
+    <div class="add-task-form__wrapper backdrop" id="addTaskFormModal">
+      <div class="add-task-form__block">
+        <h2>Add Task</h2>
+        <form id="addTaskForm">
+          <label for="taskTitle">Task Title</label>
+          <input type="text" name="title" id="taskTitle" maxlength="60" />
+          <label for="taskDate">Date</label>
+          <input type="date" name="date" id="taskDate" />
+          <fieldset>
+            <label>Priority:</label>
+            <input type="radio" name="priority" class="high" value="high" />
+            <input type="radio" name="priority" class="mid" value="mid" />
+            <input
+              type="radio"
+              name="priority"
+              class="normal"
+              value="normal"
+              checked
+            />
+          </fieldset>
+
+          <fieldset class="add-task__button-group">
+            <button class="btn add-btn" type="submit">Add</button>
+            <button class="btn cancel-btn" id="cancelBtn" type="button">
+              Cancel
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <header class="container">
+      <nav>
+        <div class="flex-between">
+          <figure class="app-logo">
+            <img src="/logo.svg" alt="application logo" />
+          </figure>
+          <h1 class="application-title"><span>To-do</span> List</h1>
+        </div>
+
+        <div class="theme-container flex-column-center" id="themeContainer">
+          <i class="fa-solid fa-sun theme-icon"></i>
+          <i class="fa-solid fa-moon theme-icon hide"></i>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <section class="task-analytics flex">
+        <div class="task-analytics__total-count flex-column-center card">
+          <span id="totalTasksCount"
+            >0 <i class="fa-solid fa-cubes-stacked"></i
+          ></span>
+          <h2>Total Tasks</h2>
+        </div>
+
+        <div class="task-analytics__completed-tasks flex-column-center card">
+          <div class="flex-between">
+            <i class="fa-solid fa-list-check"></i>
+            <h3>Completed</h3>
+          </div>
+
+          <progress
+            class="progressBar"
+            id="completedBar"
+            max="100"
+            value="70"
+            data-count="2"
+          >
+            70%
+          </progress>
+        </div>
+        <div class="task-analytics__pending-tasks flex-column-center card">
+          <div class="flex-between">
+            <i class="fa-solid fa-list"></i>
+            <h3>Pending</h3>
+          </div>
+
+          <progress
+            class="progressBar"
+            id="pendingBar"
+            max="100"
+            value="70"
+            data-count="2"
+          >
+            70%
+          </progress>
+        </div>
+
+        <div class="task-analytics__graph card">
+          <h2>This Week</h2>
+          <time id="weekDate">6 July, 2023 - 12 July, 2023</time>
+          <div class="graph__wrapper">
+            <div class="graph__body">
+              <div
+                class="bar bar__high"
+                id="barHigh"
+                data-name="High"
+                data-value="0"
+              ></div>
+              <div
+                class="bar bar__mid"
+                id="barMid"
+                data-name="Medium"
+                data-value="0"
+              ></div>
+              <div
+                class="bar bar__normal"
+                id="barNormal"
+                data-name="Normal"
+                data-value="0"
+              ></div>
+            </div>
+            <div class="graph__labels">
+              <ul>
+                <li class="label__high">High</li>
+                <li class="label__mid">Medium</li>
+                <li class="label__normal">Normal</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="add-task__container">
+        <div class="add-task__date">
+          <h2>Today</h2>
+          <time class="current-date" id="currentDate">06 July, Thursday</time>
+        </div>
+        <button class="add-task__button" id="addTaskButton">
+          <span class="plus-icon"><i class="fa-solid fa-plus"></i></span>
+          Add Task
+        </button>
+      </section>
+      <section class="calendar__container" id="calendar"></section>
+      <section class="lists-container">
+        <div class="lists-wrapper">
+          <h3>Pending</h3>
+          <ul class="pending-lists__block" id="pendingList"></ul>
+        </div>
+        <div class="lists-wrapper">
+          <h3>Done</h3>
+          <ul class="completed-lists__block" id="completedList"></ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
