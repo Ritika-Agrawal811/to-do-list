@@ -1,10 +1,10 @@
-# To-do-list
+# To-do-list :star:
 
 A To-do List application built with TypeScript.
 
-View it [here](https://sweet-seahorse-357cb8.netlify.app/).
+:paperclip: View it [here](https://sweet-seahorse-357cb8.netlify.app/).
 
-### Features
+### Features :maple_leaf:
 
 - Switch between Dark and Light Mode
 - Add and Delete To-do Items
