@@ -65,6 +65,14 @@ export default class AnalyticsTemplate implements AnalyticsBoard {
       pendingPercentage -= 10;
     }
 
+    if (totalTasks === 0) {
+      this.completedBar.classList.add("list__empty");
+      this.pendingBar.classList.add("list__empty");
+    } else {
+      this.completedBar.classList.remove("list__empty");
+      this.pendingBar.classList.remove("list__empty");
+    }
+
     // Set Completed Progress Bar
     this.completedBar.setAttribute("max", totalTasks.toString());
     this.completedBar.setAttribute("value", completedTasks.toString());
@@ -101,9 +109,15 @@ export default class AnalyticsTemplate implements AnalyticsBoard {
     ).length;
 
     // Setting Height of respective Bars
-    this.barHigh.style.height = (highTasksCount / totalTasks) * 70 + "px";
-    this.barMid.style.height = (midTasksCount / totalTasks) * 70 + "px";
-    this.barNormal.style.height = (normalTasksCount / totalTasks) * 70 + "px";
+    if (totalTasks === 0) {
+      this.barHigh.style.height = "0px";
+      this.barMid.style.height = "0px";
+      this.barNormal.style.height = "0px";
+    } else {
+      this.barHigh.style.height = (highTasksCount / totalTasks) * 50 + "px";
+      this.barMid.style.height = (midTasksCount / totalTasks) * 50 + "px";
+      this.barNormal.style.height = (normalTasksCount / totalTasks) * 50 + "px";
+    }
 
     this.barHigh.setAttribute("data-value", highTasksCount.toString());
     this.barMid.setAttribute("data-value", midTasksCount.toString());

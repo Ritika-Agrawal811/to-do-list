@@ -240,6 +240,10 @@ nav .app-logo img {
   transition: transform 150ms ease-in-out;
 }
 
+.progressBar.list__empty::before {
+  top: -50%;
+}
+
 .task-analytics__completed-tasks .progressBar::before {
   background-color: #2e8b57;
 }
